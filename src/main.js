@@ -22,6 +22,14 @@ const lighterCategories = [
 
 // const allCategories = [ ...heavierCategories, ...lighterCategories ];
 
+const shuffleArray = (array) => {
+  /* Durstenfeld shuffle algorithm */
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+};
+
 const getQuestions = async (paramStr) => {
   const reqUrl = questionsEndpoint + '?' + paramStr;
   console.log("request url: " + reqUrl); // debug output
@@ -67,6 +75,16 @@ const getSubpart = async (categories, difficulty) => {
   return questions;
 };
 
+const getRound = async (difficulty) => {
+  const subPartOne = await getSubpart(lighterCategories, difficulty);
+  const subPartTwo = await getSubpart(heavierCategories, difficulty);
+  const subPartThree = await getSubpart(heavierCategories, difficulty);
+
+  const questions = [...subPartOne, ...subPartTwo, ...subPartThree];
+  shuffleArray(questions);
+
+  return questions;
+};
 
 /**
  * Main while loop within driver function
@@ -75,4 +93,5 @@ const getSubpart = async (categories, difficulty) => {
  */
 
 // getQuestions("limit=1").then(questions => { console.log(questions); });
-getSubpart(lighterCategories, 'hard').then(questions => { console.log(questions); });
+// getSubpart(lighterCategories, 'hard').then(questions => { console.log(questions); });
+getRound(difficulties[1]).then(questions => { console.log(questions); });
