@@ -1,0 +1,11 @@
+{
+  "name": "aware",
+  "version": "1.0.0",
+  "description": "CLI tool to increase general awareness",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bhargav Das Gupta",
+  "license": "GPL-3.0"
+}
