@@ -22,8 +22,8 @@ const lighterCategories = [
 
 // const allCategories = [ ...heavierCategories, ...lighterCategories ];
 
-const getQuestions = async (params) => {
-  const reqUrl = questionsEndpoint + '?' + params;
+const getQuestions = async (paramStr) => {
+  const reqUrl = questionsEndpoint + '?' + paramStr;
   console.log("request url: " + reqUrl); // debug output
 
   const res = await fetch(reqUrl);
@@ -52,7 +52,21 @@ const getQuestions = async (params) => {
  * 3nd round diffculty = hard
  */
 
-const getPart = async (categories, difficulty) => {};
+const getSubpart = async (categories, difficulty) => {
+  const limit = 5;
+
+  const params = {
+    'limit': limit + '',
+    'categories': categories.join(','),
+    'difficulties': difficulty
+  };
+
+  const paramStr = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
+
+  const questions = await getQuestions(paramStr);
+  return questions;
+};
+
 
 /**
  * Main while loop within driver function
@@ -60,9 +74,5 @@ const getPart = async (categories, difficulty) => {};
  * and calls functions accordingly
  */
 
-const limit = 5
-const params = `limit=${limit}`
-
-getQuestions(params).then(questions => {
-  console.log(questions);
-});
+// getQuestions("limit=1").then(questions => { console.log(questions); });
+getSubpart(lighterCategories, 'hard').then(questions => { console.log(questions); });
