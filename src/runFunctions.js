@@ -50,20 +50,19 @@ const runSet = async (difficulties, readlineInterface) => {
   let totalUserScore = 0;
   let totalQuestions = 0;
 
-  /**
-  * TODO:
-  *
-  * Set rounds fetch drop cycle
-  *  Fetch the next round while user is at the beginning of last subround of current round
-  *  Delete the previous round cache (if present) while user ends first subround of current round
-  *
-  * Must provide set stats at the end of each set
-  */
+  console.log("\nStarting new set...");
 
   for (const difficulty of difficulties) {
-    // TODO:
-    // start a round request and store the promise
-    // const questions = getRound(categories, difficulties[atRound]);
+    /*
+    * TODO:
+    * Set rounds fetch drop cycle
+    *  Fetch the next round while user is at the beginning of last subround of current round
+    *  Delete the previous round cache (if present) while user ends first subround of current round
+    *  
+    * start a round request and store the promise
+    * const questions = getRound(categories, difficulties[atRound]);
+    */
+
 
     console.log(`\nFetching questions for next round...\t(difficulty: ${difficulty})\n`);
     const questions = await getRound(categories, difficulty);
@@ -77,10 +76,8 @@ const runSet = async (difficulties, readlineInterface) => {
     totalUserScore += roundScore;
   }  
 
-  console.log("You have completed a set!")
+  console.log("\nYou have completed a set!")
   console.log(`Set score: ${totalUserScore}/${totalQuestions}`);
-  
-  readlineInterface.close();
 };
 
 export { runSet };

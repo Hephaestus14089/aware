@@ -1,20 +1,23 @@
 import { runSet } from './runFunctions.js';
 import { difficulties } from './customConfig.js';
 import readline from 'node:readline'
-import { stdin, stdout } from 'node:process';
+import { stdin, stdout, exit } from 'node:process';
+import { prompt } from './utilities.js';
 
 const readlineInterface = readline.createInterface({ input: stdin, output: stdout });
 
-/**
- * Main while loop within driver function
- * keeps track of state
- * and runs sets accordingly
- */
-
 export const main = async () => {
-  await runSet(difficulties, readlineInterface);
+  while (true) {
+    await runSet(difficulties, readlineInterface);
 
-  // await 
+    const query = "\nEnter 'q' to quit and any other key to begin a new set: ";
+    const userInput = await prompt(readlineInterface, query);
+
+    if (userInput.charAt(0) === "q".charAt(0)) {
+      readlineInterface.close();
+      exit(0);
+    }
+  }
 }
 
-runSet(difficulties, readlineInterface);
+main();
