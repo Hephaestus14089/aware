@@ -14,7 +14,7 @@ const runRound = async (readlineInterface, questions) => {
 
   for (const question of questions) {
     let options = [...question.incorrectAnswers];
-    const correctAnswerIndex = Math.floor(Math.random() * 4);
+    const correctAnswerIndex = Math.floor(Math.random() * 4); // TODO: get from random function in seperate file
 
     if (correctAnswerIndex === 3)
       options.push(question.correctAnswer);
@@ -44,23 +44,48 @@ const runRound = async (readlineInterface, questions) => {
       console.log("Correct answer: " + options[correctAnswerIndex]);
     }
 
-    console.log() // blank line
+    console.log() // print blank line after each question
   } // end of round loop
-
-  console.log("Round complete!");
-  console.log(`Round score: ${userScore}/${questions.length}`)
 
   return userScore;
 };
 
-const runSet = async (readlineInterface) => {
+const runSet = async (difficulties, readlineInterface) => {
+  let totalUserScore = 0;
+  let totalQuestions = 0;
 
-  let atRound = 0;
-  let atQuestionInRound = 0;
+  /**
+  * TODO:
+  *
+  * Set rounds fetch drop cycle
+  *  Fetch the next round while user is at the beginning of last subround of current round
+  *  Delete the previous round cache (if present) while user ends first subround of current round
+  *
+  * Must provide set stats at the end of each set
+  */
 
-  const questions = await getRound(categories, difficulties[atRound]);
+  for (const difficulty of difficulties) {
+    // TODO:
+    // start a round request and store the promise
+    // const questions = getRound(categories, difficulties[atRound]);
 
-  runRound(readlineInterface, questions.slice(0, 2)); // debug ease
+    console.log(`\nFetching questions for next round...\t(difficulty: ${difficulty})\n`);
+    // TODO: wrap getRound in try catch
+    const questions = await getRound(categories, difficulty);
+
+    const roundScore = await runRound(readlineInterface, questions);
+    
+    console.log(`End of round (difficulty: ${difficulty})`);
+    console.log(`Round score: ${roundScore}/${questions.length}`);
+
+    totalQuestions += questions.length;
+    totalUserScore += roundScore;
+  }  
+
+  console.log("You have completed a set!")
+  console.log(`Set score: ${totalUserScore}/${totalQuestions}`);
+  
+  readlineInterface.close();
 };
 
 /**
@@ -69,14 +94,4 @@ const runSet = async (readlineInterface) => {
  * and runs sets accordingly
  */
 
-runSet(readlineInterface);
-
-/**
- * TODO:
- *
- * Set rounds fetch drop cycle
- *  Fetch the next round while user is at the beginning of last subround of current round
- *  Delete the previous round cache (if present) while user ends first subround of current round
- *
- * Must provide set stats at the end of each set
- */
+runSet(difficulties, readlineInterface);
