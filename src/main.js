@@ -1,9 +1,9 @@
-const { difficulties, categories } = require('./customConfig.js');
-const { getRound } = require('./getFunctions.js');
-const readline = require('node:readline');
-const { stdin: input, stdout: output } = require('node:process');
+import { difficulties, categories } from './customConfig.js';
+import { getRound } from './getFunctions.js';
+import readline from 'node:readline'
+import { stdin, stdout } from 'node:process';
 
-const readlineInterface = readline.createInterface({ input, output });
+const readlineInterface = readline.createInterface({ input: stdin, output: stdout });
 
 const runRound = async (readlineInterface, questions) => {
   const query = "enter option: ";
@@ -70,7 +70,6 @@ const runSet = async (difficulties, readlineInterface) => {
     // const questions = getRound(categories, difficulties[atRound]);
 
     console.log(`\nFetching questions for next round...\t(difficulty: ${difficulty})\n`);
-    // TODO: wrap getRound in try catch
     const questions = await getRound(categories, difficulty);
 
     const roundScore = await runRound(readlineInterface, questions);

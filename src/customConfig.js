@@ -21,4 +21,4 @@ const categories = {
     ]
 };
 
-module.exports = { questionsEndpoint, difficulties, categories };
+export { questionsEndpoint, difficulties, categories };

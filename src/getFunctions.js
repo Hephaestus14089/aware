@@ -1,9 +1,10 @@
-const { questionsEndpoint } = require('./customConfig.js');
-const { shuffleArray } = require('./utilities.js');
+import { questionsEndpoint } from './customConfig.js';
+import { shuffleArray } from './utilities.js';
 
 const getQuestions = async (paramStr) => {
   const reqUrl = questionsEndpoint + '?' + paramStr;
 
+  // TODO: wrap fetch in try catch
   const res = await fetch(reqUrl);
   const questions = await res.json();
 
@@ -38,4 +39,4 @@ const getRound = async (categories, difficulty) => {
   return questions;
 };
 
-module.exports = { getRound };
+export { getRound };
