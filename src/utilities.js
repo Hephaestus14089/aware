@@ -6,4 +6,14 @@ const shuffleArray = (array) => {
   }
 };
 
-export { shuffleArray };
+const randomInRange = (lowerLimit, upperLimit) => {
+  const rangeDiff = upperLimit - lowerLimit;
+  const randomNumber  = Math.floor(Math.random() * rangeDiff);
+  return (lowerLimit + randomNumber);
+}
+
+const prompt = (readlineInterface, query) => new Promise(resolve =>
+  readlineInterface.question(query, resolve)
+);
+
+export { shuffleArray, randomInRange, prompt };
