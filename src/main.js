@@ -6,7 +6,7 @@ import { prompt } from './utilities.js';
 
 const readlineInterface = readline.createInterface({ input: stdin, output: stdout });
 
-export const main = async () => {
+const main = async () => {
   while (true) {
     await runSet(difficulties, readlineInterface);
 
@@ -18,6 +18,6 @@ export const main = async () => {
       exit(0);
     }
   }
-}
+};
 
-main();
+export default main;
