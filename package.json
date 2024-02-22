@@ -4,9 +4,6 @@
   "description": "CLI tool to increase general awareness",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Bhargav Das Gupta",
+  "author": "Bhargav Das Gupta <dasguptabhargav@gmail.com>",
   "license": "GPL-3.0"
 }
