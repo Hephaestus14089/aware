@@ -4,8 +4,8 @@
   "description": "CLI tool to increase general awareness",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "aware": "./bin/cli.js"
   },
   "author": "Bhargav Das Gupta",
   "license": "GPL-3.0"
