@@ -80,4 +80,4 @@ const runSet = async (difficulties, readlineInterface) => {
   console.log(`Set score: ${totalUserScore}/${totalQuestions}`);
 };
 
-export { runSet };
+export { runRound, runSet };

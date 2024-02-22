@@ -1,7 +1,4 @@
-#! /usr/bin/env node
+import * as getFunctions from "./src/getFunctions.js";
+import * as runFunctions from "./src/runFunctions.js";
 
-import main from './src/main.js';
-
-console.log("A W A R E");
-
-main();
+export { getFunctions, runFunctions };
