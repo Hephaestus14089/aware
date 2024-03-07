@@ -11,6 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hephaestus14089/aware"
-  }
+    "url": "https://github.com/hephaestus14089/aware.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hephaestus14089/aware/issues"
+  },
+  "homepage": "https://github.com/hephaestus14089/aware#readme"
 }
