@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hephaestus14089/aware/issues"
   },
-  "homepage": "https://github.com/hephaestus14089/aware#readme"
+  "homepage": "https://github.com/hephaestus14089/aware#readme",
+  "engines": {
+    "node": ">=20.11.1"
+  }
 }
