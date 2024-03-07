@@ -39,4 +39,4 @@ const getRound = async (categories, difficulty) => {
   return questions;
 };
 
-export { getRound };
+export { getQuestions, getSubpart, getRound };
