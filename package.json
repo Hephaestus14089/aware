@@ -7,7 +7,7 @@
   "author": "Bhargav Das Gupta <dasguptabhargav@gmail.com>",
   "license": "GPL-3.0",
   "bin": {
-    "aware": "./index.js"
+    "aware": "./bin/cli.js"
   },
   "repository": {
     "type": "git",
