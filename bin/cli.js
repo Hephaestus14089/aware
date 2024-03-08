@@ -5,12 +5,19 @@ import { difficulties } from '../src/customConfig.js';
 import readline from 'node:readline'
 import { stdin, stdout, exit } from 'node:process';
 import { prompt } from '../src/utilities.js';
+import figlet from 'figlet';
 
 const readlineInterface = readline.createInterface({ input: stdin, output: stdout });
 
-console.log("A W A R E");
-
 const main = async () => {
+
+  try {
+    console.log(await figlet("AWARE"));
+  } catch (err) {
+    console.error(err);
+    console.log("A W A R E");
+  }
+
   while (true) {
     await runSet(difficulties, readlineInterface);
 

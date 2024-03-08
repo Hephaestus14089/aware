@@ -19,5 +19,8 @@
   "homepage": "https://github.com/hephaestus14089/aware#readme",
   "engines": {
     "node": ">=20.11.1"
+  },
+  "dependencies": {
+    "figlet": "^1.7.0"
   }
 }
